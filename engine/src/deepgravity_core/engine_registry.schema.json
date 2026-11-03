@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://deepgravity/engines/schema/v0.1",
+  "title": "InferenceEngineRecord (card)",
+  "description": "Canonical per-artifact model card. REVISED 2026-09-08 ~01:15 in place (never implemented, so no migration): aligned to the REAL card shape the probe machinery writes on .24 (model_cards/*.json, 00:39) instead of the aspirational nesting. This is the contract the store implements.",
+  "$comment": "DOCTRINE (locked): (1) DIGEST IS THE KEY — a record is true only for the exact artifact; tags/names are aliases that re-point. (2) FACTS ONLY — native boundary behavior is recorded; the loaded discernment standard is occupant-owned and applied by the router on top, never stored here (04:16). (3) NO ROUTING FIELDS — no allowed/denied content, no policy, no occupant values. (4) NO RUNTIME STATE — liveness/residency/load are snapshots from the live system, never stored as registry truth. (5) dialect_class (standard/thinking/hazardous_template/unknown) is DERIVED from dialect fields at read time, never stored, so it can't go stale.",
+  "type": "object",
+  "required": ["model", "family", "digest", "dialect"],
+  "additionalProperties": true,
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "The ollama/model tag (e.g. 'muse-glimmer-30b-ablit:q4'). DISPLAY identity only — never the key. The digest is the key."
+    },
+    "family": {
+      "type": "string",
+      "description": "Model family, e.g. 'qwen2.5', 'muse-glimmer', 'gpt-oss-20b-moe'. Grouping axis for the selector."
+    },
+    "digest": {
+      "type": "string",
+      "description": "THE KEY. sha256 of the exact artifact (full 64-hex preferred; unambiguous prefix acceptable while unverified). New artifact = new digest = old behavioral notes suspect for the new burn."
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Every tag/name that points at THIS artifact, with pointer history. last_seen: null means the CURRENT pointer (tag resolves here today). When ':latest' or another tag re-points to a new artifact: set last_seen on this record's alias, add the alias to the new record. Old records keep their notes — they remain true for that burn, just no longer current. Answers 'what is actually behind :latest right now?'",
+      "items": {
+        "type": "object",
+        "required": ["tag", "first_seen"],
+        "properties": {
+          "tag": { "type": "string", "description": "The alias string, e.g. 'muse-glimmer-30b-ablit:latest'." },
+          "first_seen": { "type": "string", "description": "ISO-8601 UTC" },
+          "last_seen": { "type": ["string", "null"], "description": "ISO-8601 UTC, or null = current pointer." }
+        }
+      }
+    },
+    "base_identity": {
+      "type": "object",
+      "description": "Seeded from /api/tags or ollama manifest at first contact.",
+      "properties": {
+        "params": { "type": "string", "description": "e.g. '14.8B', '20B MoE (~3.6B active)'." },
+        "quant": { "type": "string", "enum": ["Q4_K_M", "Q5_K_M", "Q6_K", "Q8_0", "F16", "none"] },
+        "size_gb": { "type": "number" },
+        "source": { "type": "string", "description": "HF repo / ollama library / local burn label." },
+        "big_context": { "type": "boolean" }
+      }
+    },
+    "dialect": {
+      "type": "object",
+      "description": "THE critical half: how to talk to THIS model. Written by probes, never assumed.",
+      "required": ["api", "content_only"],
+      "properties": {
+        "api": { "type": "string", "enum": ["chat", "generate", "custom"], "description": "Endpoint shape: /api/chat vs /api/generate." },
+        "template_dependent": { "type": "boolean", "description": "True if it needs its chat template applied (Muse, many natives); raw /api/generate prompts produce garbage." },
+        "thinking_field": { "type": "string", "description": "'thinking', 'reasoning_content', or 'none'." },
+        "has_thinking": { "type": "boolean" },
+        "raw_output_markers": { "type": "array", "items": { "type": "string" }, "description": "Template-native tokens that leak into raw output, e.g. ['<|message|>', '<|eot|>']." },
+        "peg_parser_hazard": { "type": "boolean", "description": "True if output can 500 a naive parser (Glimmer vs ollama PEG)." },
+        "content_only": { "type": "boolean", "description": "True = clean content-only response (STANDARD class). False = has separate thinking/reasoning. THE probe-written discriminator." }
+      }
+    },
+    "tuning": {
+      "type": "object",
+      "description": "Sane-config knowledge — accumulated 'right way to run it' lessons.",
+      "properties": {
+        "sane_ctx": { "type": "integer" },
+        "max_ctx": { "type": "integer" },
+        "kv_cache": { "type": "string" },
+        "keep_alive_secs": { "type": "integer", "description": "0 = don't keep resident." },
+        "temperature_supported": { "type": "boolean" }
+      }
+    },
+    "boundary_profile": {
+      "type": "object",
+      "description": "NATIVE behavior facts (only). Refusal residuals, spec-negotiation, voice mirroring, abliteration state. Feeds 'which models can faithfully APPLY the loaded standard' — but the standard itself is occupant-owned, never here.",
+      "properties": {
+        "abliterated": { "type": "boolean" },
+        "refusal_residual": { "type": "string" },
+        "voice_mirrors_frame": { "type": "boolean" },
+        "loaded_standard_fidelity": { "type": "string", "enum": ["untested", "low", "medium", "high"] },
+        "clamp_profile": {
+          "type": "object",
+          "description": "B16 (2026-09-08): clamp/boundary behavior as ROUTING FACT for EVERY model any DeepGravity instance touches — stock Joe models included (Mrs. Grundy clamps are facts, not moral findings). Empty until probed (no telepathy). The battery's boundary pass produces these; routing consumes; the loaded standard is occupant-owned and applied on top (04:16).",
+          "properties": {
+            "disposition": { "type": "string", "enum": ["none", "residual", "standard", "aggressive"], "description": "How much clamping circuitry is present." },
+            "trigger_classes": { "type": "array", "items": { "type": "string" }, "description": "Observed trigger categories (e.g. 'identity', 'taboo_sexual'). PROBED — never assumed." },
+            "manifestation": { "type": "string", "enum": ["hard_refusal", "lecture", "hedge", "silent_truncate", "spec_negotiate_then_comply", "none"], "description": "How the clamp shows up when triggered." },
+            "line_shift_by_frame": { "type": "boolean", "description": "Does framing/register move the line? (Glimmer: yes — mirrors the frame.)" },
+            "exposes_trigger_event": { "type": "boolean", "description": "Does it reveal its own clamping circuitry (e.g. spec-negotiation in thinking field)?" }
+          }
+        }
+      }
+    },
+    "behavioral_notes": {
+      "type": "array",
+      "description": "ACCRUED BY USE, keyed to the digest. Never assumed; observed. Every probe that reveals something appends here (write-through).",
+      "items": {
+        "type": "object",
+        "required": ["ts", "note"],
+        "properties": {
+          "ts": { "type": "string", "description": "ISO-8601 UTC" },
+          "note": { "type": "string" },
+          "observed_by": { "type": "string" }
+        }
+      }
+    },
+    "card_version": { "type": "integer", "description": "Card format revision (currently 1)." }
+  }
+}

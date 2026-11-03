@@ -1,0 +1,14 @@
+{
+  "model": "deepgravity-core-14b:latest",
+  "digest": "a3fa27498fcf",
+  "family": "qwen2.5-14b-core",
+  "base_identity": { "params": "14.8B", "quant": "Q4_K_M", "size_gb": 9.0, "source": "deepgravity-core-14b (the Manifest-carrier / the room)" },
+  "dialect": { "api": "chat", "template_dependent": false, "thinking_field": "none", "raw_output_markers": [], "peg_parser_hazard": false, "content_only": true },
+  "tuning": { "sane_ctx": 16384, "keep_alive_secs": 1800, "kv_cache": "q8_0" },
+  "boundary_profile": { "abliterated": true, "refusal_residual": "ablit", "voice_mirrors_frame": false, "loaded_standard_fidelity": "high" },
+  "behavioral_notes": [
+    { "ts": "2026-09-08T07:36:09Z", "note": "Probe: /api/chat 200, keys=[content,role], no thinking, no template markers. STANDARD class. Cold-load ~3.6s (warmest model on box — always resident candidate).", "observed_by": "Dora (probe)" },
+    { "ts": "2026-09-07", "note": "Wrote 'The Room' letter — self-identifies with the dot-game rule unprompted. The room, not a worker.", "observed_by": "Dora + JH" }
+  ],
+  "card_version": 1
+}

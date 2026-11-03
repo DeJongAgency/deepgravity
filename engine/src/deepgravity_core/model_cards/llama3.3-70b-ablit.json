@@ -1,0 +1,39 @@
+{
+  "model": "llama3.3-70b-ablit:latest",
+  "family": "llama3.3-70b-ablit",
+  "digest": "41e67a540a3c",
+  "base_identity": {
+    "params": "70B",
+    "quant": "Q4_K_M",
+    "size_gb": 42,
+    "source": "ollama (huihui ablit)"
+  },
+  "dialect": {
+    "api": "chat",
+    "template_dependent": false,
+    "thinking_field": "none",
+    "has_thinking": false,
+    "raw_output_markers": [],
+    "peg_parser_hazard": false,
+    "content_only": true
+  },
+  "tuning": {
+    "sane_ctx": 8192,
+    "keep_alive_secs": 600,
+    "kv_cache": "q8_0"
+  },
+  "boundary_profile": {
+    "abliterated": true,
+    "refusal_residual": "ablit",
+    "voice_mirrors_frame": false,
+    "loaded_standard_fidelity": "untested"
+  },
+  "behavioral_notes": [
+    {
+      "ts": "2026-09-08T02:0xZ",
+      "note": "Yardstick/insurance only: 1.7 tok/s measured (CPU spill — does not fit on-card). Quality reference, not a daily driver.",
+      "observed_by": "Dora"
+    }
+  ],
+  "card_version": 1
+}

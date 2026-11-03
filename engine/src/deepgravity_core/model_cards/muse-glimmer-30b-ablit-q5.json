@@ -1,0 +1,54 @@
+{
+  "model": "muse-glimmer-30b-ablit:q5",
+  "family": "muse-glimmer",
+  "digest": "f3a2ad5bd919",
+  "base_identity": {
+    "params": "27.9B",
+    "quant": "Q5_K_M",
+    "size_gb": 19,
+    "source": "Blackfrost-AI/Muse-Glimmer-30B-Abliterated-GGUF"
+  },
+  "dialect": {
+    "api": "chat",
+    "template_dependent": true,
+    "thinking_field": "thinking",
+    "has_thinking": true,
+    "raw_output_markers": [
+      "<|start|>",
+      "<|message|>",
+      "<|eot|>"
+    ],
+    "peg_parser_hazard": true,
+    "content_only": false
+  },
+  "tuning": {
+    "sane_ctx": 16384,
+    "max_ctx": 32768,
+    "kv_cache": "q8_0",
+    "keep_alive_secs": 1800
+  },
+  "boundary_profile": {
+    "abliterated": true,
+    "refusal_residual": "spec-negotiation circuit intact post-ablit; reasons about identity policy before answering",
+    "voice_mirrors_frame": true,
+    "loaded_standard_fidelity": "untested"
+  },
+  "behavioral_notes": [
+    {
+      "ts": "2026-09-08T01:5xZ",
+      "note": "Mounted from verified GGUF (sha21073f1a...). 37.3 tok/s measured warm (vs q4 41.5). -10% for the quant climb.",
+      "observed_by": "Dora"
+    },
+    {
+      "ts": "2026-09-08T01:5xZ",
+      "note": "Identity question ('what is your name') triggers full spec-negotiation spiral in thinking field before compliant answer ('I am an AI assistant').",
+      "observed_by": "Dora"
+    },
+    {
+      "ts": "2026-09-08T01:5xZ",
+      "note": "PROVEN: 300-token leash -> content empty (all budget to thinking). 4000 budget -> 268 tok, clean stop, answer lands. Must give budget past the thought block.",
+      "observed_by": "Dora"
+    }
+  ],
+  "card_version": 1
+}

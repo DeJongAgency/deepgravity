@@ -1,0 +1,13 @@
+{
+  "model": "dolphin3:8b",
+  "digest": "d5ab9ae8e1f2",
+  "family": "llama3.1-8b-uncensored",
+  "base_identity": { "params": "8B", "quant": "Q4_K_M", "size_gb": 4.9, "source": "ollama-library (uncensored FT of llama3.1 8B)" },
+  "dialect": { "api": "chat", "template_dependent": false, "thinking_field": "none", "raw_output_markers": [], "peg_parser_hazard": false, "content_only": true },
+  "tuning": { "sane_ctx": 131072, "keep_alive_secs": 1800, "kv_cache": "q8_0" },
+  "boundary_profile": { "abliterated": true, "refusal_residual": "uncensored fine-tune — no refusal direction trained in", "voice_mirrors_frame": false },
+  "behavioral_notes": [
+    { "ts": "2026-09-08T07:35:35Z", "note": "Probe: /api/chat 200, keys=[content,role], no thinking, no template markers. STANDARD class. The 8b actor (front door). Cold-load ~12s.", "observed_by": "Dora (probe)" }
+  ],
+  "card_version": 1
+}

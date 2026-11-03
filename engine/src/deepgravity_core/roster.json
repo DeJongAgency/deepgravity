@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "as_of": "2026-09-07",
+  "source_doc": "2026.09.07.0529 - Engine Download Queue & Fleet Status.md",
+  "note": "Declared roster (the ladder). status: KEEP | STALE-replace | QUEUED | TEST. Exact ollama tag names.",
+  "rungs": [
+    {"rung": "<1b embedder", "role": "retrieval/vectors", "model": "qwen3-embedding:0.6b", "status": "QUEUED"},
+    {"rung": "3b", "role": "cheap brain / 16GB-box ship ref", "model": "qwen2.5:3b", "status": "KEEP"},
+    {"rung": "8b actor", "role": "front door / routine lane", "model": "dolphin3:8b", "status": "KEEP"},
+    {"rung": "14b main", "role": "flagship brain (ablit)", "model": "dora-14b-4K:Qwen-Ablit", "status": "KEEP"},
+    {"rung": "14b core", "role": "engine core", "model": "deepgravity-core-14b:latest", "status": "KEEP"},
+    {"rung": "20b MoE", "role": "big-context brain-lite (test)", "model": "gurubot/gpt-oss-derestricted:20b", "status": "KEEP"},
+    {"rung": "30-32b", "role": "upper management (muse glimmer, Blackfrost ablit)", "model": "muse-glimmer-30b-ablit:q4", "status": "TEST"},
+    {"rung": "30-32b old", "role": "superseded (replace-pending, on box)", "model": "dora-32b:latest", "status": "STALE-replace-pending"},
+    {"rung": "70-class", "role": "yardstick + insurance", "model": "llama3.3-70b-ablit:latest", "status": "KEEP"}
+  ]
+}

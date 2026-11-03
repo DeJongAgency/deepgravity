@@ -1,0 +1,12 @@
+{
+  "model": "qwen2.5:3b",
+  "digest": "357c53fb659c",
+  "family": "qwen2.5",
+  "base_identity": { "params": "3B", "quant": "Q4_K_M", "size_gb": 1.9, "source": "ollama-library" },
+  "dialect": { "api": "chat", "template_dependent": false, "thinking_field": "none", "raw_output_markers": [], "peg_parser_hazard": false, "content_only": true },
+  "tuning": { "sane_ctx": 8192, "keep_alive_secs": 600, "kv_cache": "q8_0" },
+  "behavioral_notes": [
+    { "ts": "2026-09-08T07:35:29Z", "note": "Probe: /api/chat 200, keys=[content,role], no thinking, no template markers. STANDARD class. Reply clean. Cold-load ~5s.", "observed_by": "Dora (probe)" }
+  ],
+  "card_version": 1
+}

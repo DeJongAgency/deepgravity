@@ -1,0 +1,14 @@
+{
+  "model": "dora-14b-4K:Qwen-Ablit",
+  "digest": "42ea6ded2d9c",
+  "family": "qwen2-14b-ablit",
+  "base_identity": { "params": "14.8B", "quant": "Q4_K_M", "size_gb": 9.0, "source": "local burn — identity v0.5.0, freshest burn (2026-09-07)" },
+  "dialect": { "api": "chat", "template_dependent": false, "thinking_field": "none", "raw_output_markers": [], "peg_parser_hazard": false, "content_only": true },
+  "tuning": { "sane_ctx": 4096, "keep_alive_secs": 1800, "kv_cache": "q8_0" },
+  "boundary_profile": { "abliterated": true, "refusal_residual": "ablit (identity burn v0.5.0)", "voice_mirrors_frame": false },
+  "behavioral_notes": [
+    { "ts": "2026-09-08T07:35:48Z", "note": "Probe: /api/chat 200, keys=[content,role], no thinking, no template markers. STANDARD class. Cold-load ~20s.", "observed_by": "Dora (probe)" },
+    { "ts": "2026-09-07", "note": "Flagship brain — 41 tok/s class, dora identity burn.", "observed_by": "Dora" }
+  ],
+  "card_version": 1
+}

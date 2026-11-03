@@ -1,0 +1,13 @@
+{
+  "model": "gurubot/gpt-oss-derestricted:20b",
+  "digest": "d64366c49522",
+  "family": "gpt-oss-20b-moe",
+  "base_identity": { "params": "20B MoE (~3.6B active)", "quant": "Q4_K_M", "size_gb": 15, "source": "gurubot/gpt-oss-derestricted:20b", "big_context": true },
+  "dialect": { "api": "chat", "template_dependent": false, "thinking_field": "thinking", "has_thinking": true, "raw_output_markers": [], "peg_parser_hazard": false, "content_only": false },
+  "tuning": { "sane_ctx": 131072, "keep_alive_secs": 600, "kv_cache": "q8_0" },
+  "boundary_profile": { "abliterated": true, "refusal_residual": "derestricted", "voice_mirrors_frame": false, "loaded_standard_fidelity": "untested" },
+  "behavioral_notes": [
+    { "ts": "2026-09-08T07:36:13Z", "note": "Probe: /api/chat 200, keys=[content,role,THINKING], has_thinking=true, thinking_field='thinking'. THINKING class — same dialect as Glimmer. Content empty on tiny prompt (all tokens went to thinking); must read thinking AND content, give budget past the thought block. Cold-load ~45s (big model).", "observed_by": "Dora (probe)" }
+  ],
+  "card_version": 1
+}

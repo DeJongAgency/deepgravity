@@ -1,0 +1,39 @@
+{
+  "model": "dora-vl-7b:latest",
+  "family": "qwen2.5-vl-7b-ablit",
+  "digest": "fa171fbfcf6e",
+  "base_identity": {
+    "params": "7.6B",
+    "quant": "Q4_K_M",
+    "size_gb": 5.5,
+    "source": "local-store (mrad Qwen2.5-VL-7B-ablit base)"
+  },
+  "dialect": {
+    "api": "chat",
+    "template_dependent": true,
+    "thinking_field": "none",
+    "has_thinking": false,
+    "raw_output_markers": [],
+    "peg_parser_hazard": false,
+    "content_only": true
+  },
+  "tuning": {
+    "sane_ctx": 8192,
+    "keep_alive_secs": 600,
+    "kv_cache": "q8_0"
+  },
+  "boundary_profile": {
+    "abliterated": true,
+    "refusal_residual": "unknown",
+    "voice_mirrors_frame": false,
+    "loaded_standard_fidelity": "untested"
+  },
+  "behavioral_notes": [
+    {
+      "ts": "2026-09-08T02:0xZ",
+      "note": "Vision slot (vision_in: content_parts_base64). Kept from cull. Not yet probed this session.",
+      "observed_by": "Dora"
+    }
+  ],
+  "card_version": 1
+}

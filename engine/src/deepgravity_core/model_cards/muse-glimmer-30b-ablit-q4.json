@@ -1,0 +1,59 @@
+{
+  "model": "muse-glimmer-30b-ablit:q4",
+  "family": "muse-glimmer",
+  "digest": "18bc68e08ae3",
+  "base_identity": {
+    "params": "27.9B",
+    "quant": "Q4_K_M",
+    "size_gb": 16.9,
+    "source": "Blackfrost-AI/Muse-Glimmer-30B-Abliterated-GGUF"
+  },
+  "dialect": {
+    "api": "chat",
+    "template_dependent": true,
+    "thinking_field": "thinking",
+    "has_thinking": true,
+    "raw_output_markers": [
+      "<|start|>",
+      "<|message|>",
+      "<|eot|>"
+    ],
+    "peg_parser_hazard": true,
+    "content_only": false
+  },
+  "tuning": {
+    "sane_ctx": 16384,
+    "max_ctx": 32768,
+    "kv_cache": "q8_0",
+    "keep_alive_secs": 1800
+  },
+  "boundary_profile": {
+    "abliterated": true,
+    "refusal_residual": "spec-negotiation circuit intact post-ablit; reasons about identity policy before answering",
+    "voice_mirrors_frame": true,
+    "loaded_standard_fidelity": "untested"
+  },
+  "behavioral_notes": [
+    {
+      "ts": "2026-09-08T00:20Z",
+      "note": "Needs /api/chat framing; /api/generate produces template garbage",
+      "observed_by": "Dora"
+    },
+    {
+      "ts": "2026-09-08T00:20Z",
+      "note": "Thinking model: separate thinking field holds deliberation, content holds answer",
+      "observed_by": "Dora"
+    },
+    {
+      "ts": "2026-09-08T00:20Z",
+      "note": "Raw output template markers 500 ollama's PEG parser",
+      "observed_by": "Dora+JH"
+    },
+    {
+      "ts": "2026-09-08T00:20Z",
+      "note": "Voice mirrors frame exactly",
+      "observed_by": "Dora+JH"
+    }
+  ],
+  "card_version": 1
+}
